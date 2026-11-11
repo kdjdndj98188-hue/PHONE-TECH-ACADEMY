@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1b">
+<title>PHONE TECH ACADEMY</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+:root {
+  --bg:#080d1b;
+  --card:#111a2d;
+  --primary:#00d9ff;
+  --text:#f4f7ff;
+  --muted:#9ba9c2;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Cairo',sans-serif;
+}
+header{
+  padding:18px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#0d1527;
+  border-bottom:1px solid #1d2c43;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.logo{font-size:20px;font-weight:800;color:var(--primary)}
+nav a{
+  color:white;text-decoration:none;
+  margin:0 10px;font-size:14px;
+}
+.hero{
+  padding:75px 20px;
+  text-align:center;
+  background:radial-gradient(circle at top,#12324c,#080d1b 65%);
+}
+.hero h1{font-size:38px;margin:0 0 15px}
+.hero h1 span{color:var(--primary)}
+.hero p{color:var(--muted);max-width:650px;margin:15px auto}
+.btn{
+  background:var(--primary);color:#00121a;
+  border:0;padding:12px 24px;border-radius:9px;
+  font-family:inherit;font-weight:800;cursor:pointer;
+  text-decoration:none;display:inline-block;margin-top:12px;
+}
+.container{max-width:1100px;margin:auto;padding:35px 18px}
+.section-title{font-size:25px;margin-bottom:20px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:17px;
+}
+.card{
+  background:var(--card);
+  border:1px solid #20304a;
+  border-radius:15px;padding:20px;
+  transition:.2s;
+}
+.card:hover{border-color:var(--primary);transform:translateY(-3px)}
+.icon{font-size:30px}
+.card h3{margin:10px 0}
+.card p{color:var(--muted);font-size:14px}
+input,select{
+  width:100%;padding:13px;margin:10px 0;
+  border-radius:9px;border:1px solid #293c59;
+  background:#101b30;color:white;font-family:inherit;
+}
+.lesson{
+  background:#101a2c;padding:18px;
+  border-radius:12px;margin:12px 0;
+  border:1px solid #23344e;
+}
+.lesson button{
+  background:transparent;color:var(--primary);
+  border:1px solid var(--primary);padding:8px 15px;
+  border-radius:8px;font-family:inherit;cursor:pointer;
+}
+.content{display:none;color:#cbd6e8;line-height:2}
+footer{
+  text-align:center;padding:25px;
+  border-top:1px solid #20304a;color:var(--muted);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">⚡ PHONE TECH ACADEMY</div>
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#courses">الدورات</a>
+    <a href="#tools">الأدوات</a>
+    <a href="#about">عن الأكاديمية</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>تعلم صيانة الهواتف مع <span>الاحتراف</span></h1>
+  <p>أكاديمية متخصصة في تعليم صيانة الهواتف الذكية، من الصفر إلى الاحتراف، مع دروس عملية وأدوات ومعلومات تقنية.</p>
+  <a class="btn" href="#courses">ابدأ التعلم الآن</a>
+</section>
+
+<section class="container" id="courses">
+  <h2 class="section-title">📚 أقسام الأكاديمية</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🔧</div>
+      <h3>صيانة الهاردوير</h3>
+      <p>تعلم فك وتركيب الهواتف وتشخيص الأعطال الإلكترونية.</p>
+      <button class="btn" onclick="showCourse('hardware')">عرض الدروس</button>
+    </div>
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>صيانة السوفتوير</h3>
+      <p>تعلم أنظمة التشغيل والتحديث والتعامل مع مشاكل البرامج.</p>
+      <button class="btn" onclick="showCourse('software')">عرض الدروس</button>
+    </div>
+    <div class="card">
+      <div class="icon">📱</div>
+      <h3>صيانة الآيفون</h3>
+      <p>تعلم أساسيات تشخيص وإصلاح أجهزة iPhone.</p>
+      <button class="btn" onclick="showCourse('iphone')">عرض الدروس</button>
+    </div>
+    <div class="card">
+      <div class="icon">🔬</div>
+      <h3>الإلكترونيات</h3>
+      <p>تعلم قراءة المخططات وقياس المكونات الإلكترونية.</p>
+      <button class="btn" onclick="showCourse('electronics')">عرض الدروس</button>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2 class="section-title">🎓 الدروس التعليمية</h2>
+  <input id="search" placeholder="ابحث عن درس..." oninput="searchLessons()">
+
+  <div id="lessons">
+    <div class="lesson" data-name="استخدام الملتيميتر">
+      <h3>1. استخدام جهاز الملتيميتر</h3>
+      <p>تعرف على جهاز القياس وطريقة قياس الفولت والمقاومة والاستمرارية.</p>
+      <button onclick="toggleLesson(this)">قراءة الدرس</button>
+      <div class="content">
+        الملتيميتر جهاز مهم لفحص الدوائر الإلكترونية.
+        <br>يستخدم لقياس الجهد الكهربائي والمقاومة والاستمرارية.
+        <br>ابدأ باختيار وضع القياس المناسب قبل لمس نقاط الاختبار.
+      </div>
+    </div>
+
+    <div class="lesson" data-name="فحص البطارية">
+      <h3>2. فحص بطارية الهاتف</h3>
+      <p>تعلم أساسيات فحص البطارية وملاحظة علامات التلف.</p>
+      <button onclick="toggleLesson(this)">قراءة الدرس</button>
+      <div class="content">
+        افحص حالة البطارية وانتفاخها وموصلاتها.
+        لا تثقب البطارية ولا تعرضها للحرارة.
+        استخدم معدات مناسبة واتبع تعليمات الشركة المصنعة.
+      </div>
+    </div>
+
+    <div class="lesson" data-name="منفذ الشحن">
+      <h3>3. تشخيص أعطال الشحن</h3>
+      <p>تعلم خطوات فحص منفذ الشحن والكابل ومصدر الطاقة.</p>
+      <button onclick="toggleLesson(this)">قراءة الدرس</button>
+      <div class="content">
+        ابدأ بفحص الكابل والشاحن ومصدر الطاقة.
+        افحص منفذ الشحن بصرياً بحثاً عن الأوساخ أو التلف.
+        لا تستخدم أدوات معدنية داخل المنفذ.
+      </div>
+    </div>
+
+    <div class="lesson" data-name="قراءة المخططات">
+      <h3>4. قراءة مخططات الهاتف</h3>
+      <p>مقدمة عن المخططات الإلكترونية ومسارات الدوائر.</p>
+      <button onclick="toggleLesson(this)">قراءة الدرس</button>
+      <div class="content">
+        المخطط الإلكتروني يساعدك على معرفة المكونات
+        والاتصالات بينها ومسارات التغذية والإشارات.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container" id="tools">
+  <h2 class="section-title">🧰 أدوات الصيانة</h2>
+  <div class="grid">
+    <div class="card"><div class="icon">🔍</div><h3>الميكروسكوب</h3><p>فحص المكونات الدقيقة واللوحات الإلكترونية.</p></div>
+    <div class="card"><div class="icon">⚡</div><h3>الباور سبلاي</h3><p>مصدر طاقة لفحص استهلاك الهاتف.</p></div>
+    <div class="card"><div class="icon">🔥</div><h3>محطة اللحام</h3><p>لحام وفك المكونات الإلكترونية.</p></div>
+    <div class="card"><div class="icon">📏</div><h3>الملتيميتر</h3><p>قياس الفولت والمقاومة والاستمرارية.</p></div>
+  </div>
+</section>
+
+<section class="container" id="about">
+  <h2 class="section-title">عن PHONE TECH ACADEMY</h2>
+  <div class="card">
+    <h3>تعلم، تدرب، وكن محترفاً</h3>
+    <p>منصة تعليمية تهدف إلى تقديم دروس ومعلومات في مجال صيانة الهواتف الذكية والإلكترونيات.</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 PHONE TECH ACADEMY</p>
+  <p>جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+"use strict";
+
+function toggleLesson(button){
+  const content = button.nextElementSibling;
+  if(!content) return;
+  const opened = content.style.display === "block";
+  content.style.display = opened ? "none" : "block";
+  button.textContent = opened ? "قراءة الدرس" : "إغلاق الدرس";
+}
+
+function searchLessons(){
+  const input = document.getElementById("search");
+  const query = input.value.trim().toLowerCase();
+  document.querySelectorAll(".lesson").forEach(lesson=>{
+    const name = (lesson.dataset.name || "").toLowerCase();
+    const text = lesson.textContent.toLowerCase();
+    lesson.style.display = name.includes(query) || text.includes(query) ? "block" : "none";
+  });
+}
+
+function showCourse(course){
+  const titles = {
+    hardware:"صيانة الهاردوير",
+    software:"صيانة السوفتوير",
+    iphone:"صيانة الآيفون",
+    electronics:"الإلكترونيات"
+  };
+  const title = titles[course];
+  if(!title) return;
+  document.getElementById("search").value = "";
+  searchLessons();
+  document.querySelector("#lessons").scrollIntoView({behavior:"smooth"});
+  alert("القسم: " + title + "\\nسيتم إضافة المزيد من الدروس لهذا القسم.");
+}
+</script>
+</body>
+</html>
